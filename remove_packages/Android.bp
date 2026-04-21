@@ -21,7 +21,8 @@ android_app_import {
          "FossifyGallery",
          "Jelly",
          "Etar",
-         "Gemini",
+         "GeminiShell_227",
+         "PrebuiltDeskClockGoogle_76007351",
      ],
  	dex_preopt: {
  		enabled: false,
