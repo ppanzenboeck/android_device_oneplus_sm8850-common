@@ -489,3 +489,10 @@ PRODUCT_COPY_FILES += \
 
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/oneplus/sm8850-common/sm8850-common-vendor.mk)
+
+# Derp Build Type
+DERPFEST_BUILD_TYPE := Community
+
+# Remove Packages
+PRODUCT_PACKAGES += \
+    RemovePackages
