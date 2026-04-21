@@ -95,6 +95,8 @@ TARGET_KERNEL_CONFIG := \
     gki_defconfig \
     vendor/pineapple_GKI.config \
     vendor/oplus/pineapple_GKI.config
+#    ksun_sus.config \
+
 
 # Kernel modules
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(TARGET_KERNEL_SOURCE)/modules.system_dlkm.list.msm.pineapple))
@@ -271,3 +273,5 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 include vendor/oneplus/sm8850-common/BoardConfigVendor.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
+SELINUX_IGNORE_NEVERALLOWS := true
