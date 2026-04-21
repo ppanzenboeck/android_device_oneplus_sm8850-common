@@ -491,7 +491,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, vendor/oneplus/sm8850-common/sm8850-common-vendor.mk)
 
 # Derp Build Type
-DERPFEST_BUILD_TYPE := Community
+DERPFEST_BUILD_TYPE := Official
 
 # Remove Packages
 PRODUCT_PACKAGES += \
