@@ -254,6 +254,10 @@ vendor/etc/ssg/tz_whitelist.json
 vendor/lib64/libqwes.so
 vendor/lib64/libtaautoload.so
 
+# ConsumerIR
+my_product/del-app/ConsumerIRApp/ConsumerIRApp.apk:product/app/ConsumerIRApp/ConsumerIRApp.apk;PRESIGNED
+my_stock/etc/asl/com.oplus.consumerIRApp-safetyLabel.xml:product/etc/asl/com.oplus.consumerIRApp-safetyLabel.xml
+
 # DCF
 vendor/lib64/libDcfClientSensor.so
 vendor/lib64/libDcfHalFramework.so
