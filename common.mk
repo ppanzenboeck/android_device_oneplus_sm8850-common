@@ -525,5 +525,8 @@ PRODUCT_PACKAGES += \
 # ViPER4AndroidFX
 # [TMP disable] $(call inherit-product-if-exists, packages/apps/ViPER4AndroidFX/config.mk)
 
+# JamesDSP
+$(call inherit-product-if-exists, packages/apps/JamesDSP/config.mk)
+
 # GameBar Performance Overlay
 $(call inherit-product-if-exists, packages/apps/GameBar/gamebar.mk)
