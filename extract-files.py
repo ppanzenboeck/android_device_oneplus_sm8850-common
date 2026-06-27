@@ -149,6 +149,17 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/liblistensoundmodel2vendor.so',
     ): blob_fixup()
         .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
+    'vendor/etc/public.libraries.txt': blob_fixup()
+        .add_line_if_missing('libarcsoft_hdr_couple_api.so')
+        .add_line_if_missing('libarcsoft_high_dynamic_range_couple.so')
+        .add_line_if_missing('libarcsoft_smart_denoise.so')
+        .add_line_if_missing('libarcsoft_turbo_hdr_raw.so')
+        .add_line_if_missing('libarcsoft_turbo_raw.so')
+        .add_line_if_missing('libarcsoft_qnnhtp.so')
+        .add_line_if_missing('libQnnHtp.so')
+        .add_line_if_missing('libQnnSystem.so')
+        .add_line_if_missing('libQnnHtpV81Stub.so')
+        .add_line_if_missing('libQnnGpu.so'),
     'vendor/usr/keylayout/gpio-keys.kl': blob_fixup()
         .add_line_if_missing('key 735   ASSIST'),
 }  # fmt: skip
