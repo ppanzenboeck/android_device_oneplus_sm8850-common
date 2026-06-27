@@ -276,6 +276,9 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 SELINUX_IGNORE_NEVERALLOWS := true
 
+# Camera (Oplus camera port) - OEM camera sets vendor props outside the standard namespace.
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+
 # OOS Cam
 PRODUCT_SOONG_NAMESPACES += \
     vendor/oneplus/macan-camera
