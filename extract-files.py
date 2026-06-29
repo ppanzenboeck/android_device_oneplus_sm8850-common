@@ -103,6 +103,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libinput_shim.so'),
     # Inject Dolby Vision codec include into every non-vendor canoe variant.
     (
+        'vendor/bin/hw/vendor.qti.media.c2@1.0-service',
+        'vendor/bin/hw/vendor.qti.media.c2audio@1.0-service',
+    ): blob_fixup()
+        .replace_needed('android.hardware.media.c2-V1-ndk.so', 'android.hardware.media.c2-V2-ndk.so'),
+    (
         'vendor/etc/media_codecs_canoe_sku1.xml',
         'vendor/etc/media_codecs_canoe_sku2.xml',
         'vendor/etc/media_codecs_canoe_sku3.xml',
