@@ -275,3 +275,7 @@ include vendor/oneplus/sm8850-common/BoardConfigVendor.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 SELINUX_IGNORE_NEVERALLOWS := true
+
+# OOS Cam
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/oneplus/macan-camera

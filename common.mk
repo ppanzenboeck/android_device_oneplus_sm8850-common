@@ -1,4 +1,4 @@
-#
+
 # Copyright (C) 2021-2026 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -514,3 +514,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     remote_provisioning.enable_rkpd=true \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com
+
+# Camera
+$(call inherit-product-if-exists, device/oneplus/infiniti-camera/opluscamera.mk)
