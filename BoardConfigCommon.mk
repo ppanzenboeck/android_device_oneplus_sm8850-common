@@ -1,4 +1,4 @@
-#
+
 # Copyright (C) 2021-2025 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -275,3 +275,7 @@ include vendor/oneplus/sm8850-common/BoardConfigVendor.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 SELINUX_IGNORE_NEVERALLOWS := true
+
+# OOS Cam
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/oneplus/infiniti-camera
