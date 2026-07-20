@@ -11,6 +11,10 @@ on post-fs-data
     mkdir /data/vendor/mmdump/adsp 0777 system system
     chmod 0777 /data/vendor/mmdump/adsp
 
+    # ViPER4Android AIDL shared-memory channel
+    mkdir /data/vendor/audiox 0777 audioserver audio
+    exec u:r:vendor_init:s0 -- /vendor/bin/sh /vendor/bin/init.v4a.sh
+
     # Audio HAL feedback
     chown media media /proc/mm_fb
 

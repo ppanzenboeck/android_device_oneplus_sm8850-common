@@ -55,6 +55,7 @@ PRODUCT_PACKAGES += \
     libreverbaidl \
     libtinyalsav2 \
     libtinycompress \
+    libv4a_aidl \
     libvisualizeraidl \
     qti-audio-types-aidl-V1-ndk.vendor \
     qtiaudiohalvendorextn
@@ -71,6 +72,7 @@ $(foreach DEVICE_SKU, $(QCV_FAMILY_SKUS), \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_$(DEVICE_SKU)/audio_policy_configuration.xml)
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml \
     $(CONFIG_HAL_SRC_DIR)/mem_logger_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mem_logger_config.xml \
     $(CONFIG_HAL_SRC_DIR)/microphone_characteristics.xml:$(TARGET_COPY_OUT_VENDOR)/etc/microphone_characteristics.xml \
     $(CONFIG_HAL_SRC_DIR)/vendor_audio_interfaces.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vendor_audio_interfaces.xml
@@ -177,6 +179,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
+    init.v4a.sh \
     init.oplus.rc \
     init.kernel.post_boot-memory.sh \
     init.qcom.early_boot.sh \
@@ -504,8 +507,9 @@ DERPFEST_BUILD_TYPE := Official
 PRODUCT_PACKAGES += \
     RemovePackages
 
-# ViPER4AndroidFX
-# [TMP disable] $(call inherit-product-if-exists, packages/apps/ViPER4AndroidFX/config.mk)
+# ViPER4Android
+PRODUCT_PACKAGES += \
+    ViPER4Android
 
 # GameBar Performance Overlay
 $(call inherit-product-if-exists, packages/apps/GameBar/gamebar.mk)
