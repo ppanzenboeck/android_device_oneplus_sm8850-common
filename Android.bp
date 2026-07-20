@@ -25,4 +25,11 @@ android_app_import {
     product_specific: true,
     presigned: true,
     preprocessed: true,
+    optional_uses_libs: [
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
+    dex_preopt: {
+        enabled: false,
+    },
 }
