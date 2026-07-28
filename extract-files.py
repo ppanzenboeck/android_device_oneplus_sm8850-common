@@ -99,8 +99,11 @@ blob_fixups: blob_fixups_user_type = {
         ),
     'system_ext/bin/horae': blob_fixup()
         .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-21.12.so'),
-    'system_ext/lib64/libwfdnative.so': blob_fixup()
-        .add_needed('libinput_shim.so'),
+    'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
+        .replace_needed('libaudioclient.so', 'libaudiobase.so'),
+    'system_ext/lib64/libwfdservice.so': blob_fixup()
+        .add_needed('libaudiobase.so')
+        .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
     # Inject Dolby Vision codec include into every non-vendor canoe variant.
     (
         'vendor/bin/hw/vendor.qti.media.c2@1.0-service',
