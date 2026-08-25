@@ -8,7 +8,10 @@
     <bool name="doze_long_press_proximity_check">true</bool>
 
     <!-- Whether device has VOOC charging support -->
-    <bool name="config_hasVoocCharger">true</bool>
+    <bool name="config_hasVoocCharger">false</bool>
+
+    <!-- Whether device has SuperVOOC charging support -->
+    <bool name="config_hasSuperVoocCharger">true</bool>
 
     <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
     <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/oplus_chg/battery/voocchg_ing</string>
