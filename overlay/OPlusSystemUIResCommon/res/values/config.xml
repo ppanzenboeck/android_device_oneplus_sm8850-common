@@ -10,4 +10,7 @@
 
     <!-- Keep the adaptive panel mode active while dozing so ADFR can idle at 1 Hz. -->
     <integer name="config_keyguardMaxRefreshRate">-1</integer>
+
+    <!-- Whether device has a dual-cell battery architecture -->
+    <bool name="config_hasDualCellBattery">true</bool>
 </resources>
