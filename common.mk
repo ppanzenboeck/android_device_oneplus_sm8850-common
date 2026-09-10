@@ -513,6 +513,11 @@ $(call inherit-product-if-exists, packages/apps/JamesDSP/config.mk)
 # GameBar Performance Overlay
 $(call inherit-product-if-exists, packages/apps/GameBar/gamebar.mk)
 
+# SELinux Treble Labeling
+PRODUCT_SELINUX_TREBLE_LABELING_TRACKING_LIST_FILE := \
+    device/oneplus/sm8850-common/sepolicy/tracking_list.yaml
+PRODUCT_ENFORCE_SELINUX_TREBLE_LABELING := false
+
 # DT2W
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/touchpanel.kl
