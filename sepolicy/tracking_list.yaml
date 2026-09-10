@@ -6,3 +6,7 @@ non_coredomain_for_platform_apps:
     bug: 0
   - name: com.android.gamebar
     bug: 0
+  - apk: OplusCamera.apk
+    bug: 0
+  - name: com.oplus.camera
+    bug: 0
