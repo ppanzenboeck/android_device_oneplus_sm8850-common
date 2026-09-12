@@ -274,6 +274,10 @@ include vendor/oneplus/sm8850-common/BoardConfigVendor.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
+ifeq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor-user
+endif
+
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Camera (Oplus camera port) - OEM camera sets vendor props outside the standard namespace.
