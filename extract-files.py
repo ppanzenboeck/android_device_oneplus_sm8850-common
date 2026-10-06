@@ -110,8 +110,15 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/seccomp_policy/syshealthmon.policy'
     ): blob_fixup()
         .add_line_if_missing('lseek: 1'),
+    # Preserve the already verified Android 17 WFD compatibility fixes.
+    'system_ext/lib64/libwfdcommonutils.so': blob_fixup()
+        .remove_needed('libheif.so'),
+    'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
+        .replace_needed('libaudioclient.so', 'libaudiobase.so'),
     'system_ext/lib64/libwfdservice.so': blob_fixup()
-        .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
+        .add_needed('libaudiobase.so')
+        .replace_needed('android.media.audio.common.types-V4-cpp.so',
+                        'android.media.audio.common.types-V5-cpp.so'),
     # Inject Dolby Vision codec include into every non-vendor canoe variant.
     (
         'vendor/bin/hw/vendor.qti.media.c2@1.0-service',
@@ -127,10 +134,14 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/media_codecs_canoe_v1.xml',
         'vendor/etc/media_codecs_canoe_v2.xml',
     ): blob_fixup()
-        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*
-', '')
-        .regex_replace(r'([ 	]*</MediaCodecs>)', r'    <Include href="media_codecs_dolby_vision.xml" />
-'),
+        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', '')
+        .regex_replace(r'([ 	]*</MediaCodecs>)', r'    <Include href="media_codecs_dolby_vision.xml" />\n\1'),
+    # Retain the stock audio core AIDL version (Jonas' 5709a47).
+    # This 16.0.8 Bluetooth blob imports only three AudioDeviceDescription
+    # constants exported by V4, which the stock audio.core-V3 also uses.
+    'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V5-ndk.so',
+                        'android.media.audio.common.types-V4-ndk.so'),
     'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
         .add_needed('libaudioutils_shim.so')
         .add_needed('libbluetooth_audio_session_aidl_shim.so'),

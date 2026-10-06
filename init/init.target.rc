@@ -160,6 +160,19 @@ on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
     write /sys/bus/platform/devices/1c08000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
 
+service vendor.camera-provider /vendor/bin/hw/vendor.qti.camera.provider-service_64
+    override
+    interface aidl android.hardware.camera.provider.ICameraProvider/vendor_qti/0
+    interface aidl vendor.qti.hardware.camera.offlinecamera.IOfflineCameraService/default
+    interface aidl vendor.qti.hardware.camera.aon.IAONService/default
+    class hal
+    user cameraserver
+    group audio camera input drmrpc oem_2907 oem_2912 wakelock
+    ioprio rt 4
+    capabilities SYS_NICE IPC_LOCK BLOCK_SUSPEND
+    task_profiles CameraServiceCapacity HighPerformance ProcessCapacityHigh
+    setenv ADSP_LIBRARY_PATH ";/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp;/vendor/dsp;/odm/lib/rfsa/adsp;/vendor/lib/rfsa/adsp"
+
 on shutdown
     write /sys/kernel/qcom_rproc/shutdown_in_progress 1
     stop vendor.per_proxy

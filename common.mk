@@ -9,6 +9,11 @@ $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+# Android 17 requires userspace snapshots; legacy dm-snapshot OTAs are rejected.
+# Retain the existing vendor-ramdisk tools and use snapuserd in init_boot's
+# generic ramdisk. Enable VABC payload metadata without extra COW compression.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := none
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -216,8 +221,8 @@ endif
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
-#PRODUCT_COPY_FILES += \
-#    kernel/oneplus/sm8850/modules.systemdlkm_blocklist.msm.pineapple:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
+PRODUCT_COPY_FILES += \
+    kernel/platform/kernel-6.12/vendor/oneplus/kernel/modules-lists/modules.systemdlkm_blocklist.msm.canoe:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 
 # Keymint
 PRODUCT_PACKAGES += \
@@ -529,7 +534,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     remote_provisioning.hostname=remoteprovisioning.googleapis.com
 
 # Camera
-$(call inherit-product-if-exists, device/oneplus/infiniti-camera/opluscamera.mk)
+$(call inherit-product-if-exists, device/oneplus/macan-camera/opluscamera.mk)
 
 # Device is 4K-pages (kernel CONFIG_ARM64_4K_PAGES=y); declare it so check_elf_file
 # does not require the 16K-readiness alignment that older 4K OEM camera JNI libs lack.
