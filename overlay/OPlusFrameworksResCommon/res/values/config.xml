@@ -9,6 +9,10 @@
          available on some devices. -->
     <bool name="config_enableHapticTextHandle">true</bool>
 
+    <!-- When true, udfps vote is ignored. This prevents UdfpsObserver from locking physical
+         refresh rate to max fps and disabling refresh rate switching on LTPS displays. -->
+    <bool name="config_ignoreUdfpsVote">true</bool>
+
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
