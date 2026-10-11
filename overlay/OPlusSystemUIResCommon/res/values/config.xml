@@ -10,4 +10,8 @@
 
     <!-- Whether device has a dual-cell battery architecture -->
     <bool name="config_hasDualCellBattery">true</bool>
+
+    <!-- Whether to request the max refresh rate before biometric auth for a snappier unlock.
+         Disabled to prevent locking physical display refresh rate to max on LTPS panels. -->
+    <bool name="config_request_pre_auth_refresh_rate">false</bool>
 </resources>
